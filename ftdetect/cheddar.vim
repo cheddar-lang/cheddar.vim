@@ -3,4 +3,4 @@
 " URL:        http://github.com/cheddar-lang/cheddar.vim
 " License:    Apache-2.0
 
-autocmd BufNewFile,BufRead *.cheddar *.cdr *.ches set filetype=cheddar
+autocmd BufNewFile,BufRead *.cheddar,*.cdr,*.ches set filetype=cheddar
