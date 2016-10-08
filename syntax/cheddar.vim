@@ -9,9 +9,13 @@ if exists("b:current_syntax")
 endif
 
 " {{{ Whitespace
+syntax match todos contained "\<\(TODO\|FIXME\|XXX\|NOTE\|WTF\|HACK\):" containedin=cheddarComment
+
 syntax region cheddarComment start=#\/\*# end=#\*\/#
 syntax match cheddarComment /\/\/.*/
+
 highlight default link cheddarComment Comment
+highlight default link todos Todo
 " }}}
 
 " {{{ Variables
@@ -20,11 +24,11 @@ highlight default link cheddarVariable Identifier
 " }}}
 
 " {{{ Keywords
+syntax keyword cheddarSecondaryKeywords var let const unary binary op
+highlight default link cheddarSecondaryKeywords Statement
+
 syntax keyword cheddarPrimaryKeywords class func
 highlight default link cheddarPrimaryKeywords Keyword
-
-syntax keyword cheddarSecondaryKeywords var let const unary binary
-highlight default link cheddarSecondaryKeywords Keyword
 
 syntax keyword cheddarControlFlowKeywords if else for while
 highlight default link cheddarControlFlowKeywords Keyword
@@ -32,11 +36,16 @@ highlight default link cheddarControlFlowKeywords Keyword
 syntax keyword cheddarIntermediateKeywords break continue static public private
 highlight default link cheddarIntermediateKeywords Keyword
 
-syntax keyword cheddarLiteralKeywords nil true false self super init
+syntax keyword cheddarLiteralKeywords nil self super init
 highlight default link cheddarLiteralKeywords Keyword
 " }}}
 
 " {{{ Literals
+
+" Boolean
+syntax keyword cheddarBoolean true false
+highlight default link cheddarBoolean Boolean
+
 
 " Number
 syntax match cheddarIntegerLiteral /\<\d\+\%(_\d\+\)*\%(\.\d\+\%(_\d\+\)*\)\=\>/
@@ -53,10 +62,13 @@ highlight default link cheddarStringLiteral String
 highlight default link cheddarStringFormat SpecialChar
 highlight default link cheddarStringEscape SpecialChar
 
+" Symbol
+syntax match cheddarSymbol /@[[:alpha:]_][[:alnum:]_]*/
+highlight default link CheddarSymbol Identifier
 " }}}
 
 " {{{ Operators
-syntax match cheddarSymbolOperator "\([*%+\-|&=<>:?]\+\|@\"\)"
+syntax match cheddarSymbolOperator "\([*%+\-|&=<>:?]\+\|@["\.]\+\)"
 highlight default link cheddarSymbolOperator Operator
 
 syntax keyword cheddarWordOperator sqrt cbrt root sin cos tan acos cos tan acos asin atan log has floor ceil round abs repr sign print what is actually as
