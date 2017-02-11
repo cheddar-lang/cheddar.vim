@@ -24,7 +24,7 @@ highlight default link cheddarVariable Identifier
 " }}}
 
 " {{{ Keywords
-syntax keyword cheddarSecondaryKeywords var let const unary binary op
+syntax keyword cheddarSecondaryKeywords var let const unary binary op return
 highlight default link cheddarSecondaryKeywords Statement
 
 syntax keyword cheddarPrimaryKeywords class func
