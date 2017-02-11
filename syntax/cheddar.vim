@@ -30,6 +30,9 @@ highlight default link cheddarSecondaryKeywords Statement
 syntax keyword cheddarPrimaryKeywords class func
 highlight default link cheddarPrimaryKeywords Keyword
 
+syntax keyword cheddarSubprimaryKeywords extends
+highlight default link cheddarSubprimaryKeywords Keyword
+
 syntax keyword cheddarControlFlowKeywords if else for while
 highlight default link cheddarControlFlowKeywords Keyword
 
